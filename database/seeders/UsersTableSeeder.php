@@ -16,9 +16,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-             'name'=> 'Ariful',
-             'email'=>'admin@gmail.com',
-             'password'=>bcrypt('12345'),
+             'name'=> 'Admin',
+             'email'=>'info@neuralwebx.com',
+             'password'=>bcrypt('123456'),
              'role'=>'admin'
          ]);
     }
