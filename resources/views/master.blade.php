@@ -11,7 +11,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
-    
+
 
     <!-- Bootstrap core CSS -->
  <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -42,22 +42,22 @@
       }
     </style>
 
-    
+
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.0/examples/dashboard/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-  @include('sweetalert::alert')   
+  @include('sweetalert::alert')
 
- @include('Backend.partials.header')
+ @include('backend.partials.header')
 
 
  <div class="container-fluid">
   <div class="row">
-  
 
- @include('Backend.partials.sidebar')
+
+ @include('backend.partials.sidebar')
 
 
 
@@ -66,7 +66,7 @@
       <!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"> -->
         <!-- <h1 class="h2">Dashboard</h1> -->
 
-      
+
       @yield('content')
 
 

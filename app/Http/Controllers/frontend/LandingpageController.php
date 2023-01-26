@@ -82,7 +82,7 @@ class LandingpageController extends Controller
     $credentials = $request->except('_token');
     //    dd($credentials);
     if (auth()->attempt($credentials)) {
-      
+
       Alert::success('Login', "Login Successful");
       return redirect()->route("website");
     }
@@ -120,53 +120,51 @@ class LandingpageController extends Controller
     public function store(Request $request,$room_id)
     {
 
-      $request->validate(([
-          
-        "check_in"=>"date|after_or_equal:now",
-        "check_out"=>"date|after:check_in",
-
-      ]));
- 
-                    // create the order
+        $request->validate([
+            "check_in"=>"date|after_or_equal:now",
+            "check_out"=>"date|after:check_in",
+        ]);
         $room = Room::find($room_id);
         $fromDate=$request->check_in;
         $toDate=$request->check_out;
-
-        $roomAvailability = Booking::where('room_id',$room->id)
+        $roomAvailability = BookingDetails::where('room_id',$room->id)
                             ->whereBetween('check_in_date',[$fromDate,$toDate])
                             ->pluck('check_in_date');
-        ($roomAvailability);
-        
         $period = CarbonPeriod::create($fromDate, $toDate);
-        // dd($period);
-        
-        // Iterate over the period
-        foreach ($period as $date) {
+        $totalDays = count($period);
+        $booking = null;
+        foreach ($period as $key=> $date) {
           foreach($roomAvailability as $availableRoom){
-            // $dateToFormateYHD = 
+            // $dateToFormateYHD =
                 if($availableRoom = date('Y-m-d',strtotime($date))){
                   Alert::error('Opps !!', 'Room Not Available on this day');
                   return redirect()->route('website.rooms');
                 }
           }
-         $booking =  Booking::create([
+
+          if($key == 0 ){
+            $booking =  Booking::create([
+                'user_id'=>auth()->user()->id,
+                'room_id'=>$room->id,
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'address'=>$request->address,
+                'contact'=>$request->contact,
+                "days"=>$totalDays,
+                'total_amount'=>$room->amount
+            ]);
+          }
+
+        BookingDetails::create([
+            'booking_id'=>$booking->id,
             'user_id'=>auth()->user()->id,
             'room_id'=>$room->id,
             'name'=>$request->name,
             'email'=>$request->email,
-            'total_days'=>$date,
-        ]); 
-        BookingDetails::create([
-          'booking_id'=>$booking->id,
-          'user_id'=>auth()->user()->id,
-          'room_id'=>$room->id,
-          'name'=>$request->name,
-          'email'=>$request->email,
-          'address'=>$request->address,
-          'contact'=>$request->contact,
-          'check_in_date'=>$date,
-         
-      ]);
+            'address'=>$request->address,
+            'contact'=>$request->contact,
+            'check_in_date'=>$date,
+        ]);
         }
     Alert::success('Booking', 'Booking Successful');
     return redirect()->route('website.rooms');
@@ -191,5 +189,5 @@ class LandingpageController extends Controller
       Alert::success('Profile','User profile updated.');
       return redirect()->route('website');
   }
-  
+
 }

@@ -16,16 +16,16 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         Hotel::create([
-            'Name'=>$request->name,  
-            'Email'=>$request->email,  
-            'Address'=>$request->address,  
-            'Contact'=>$request->contact,  
+            'Name'=>$request->name,
+            'Email'=>$request->email,
+            'Address'=>$request->address,
+            'Contact'=>$request->contact,
             'Website'=>$request->website,
-            
+
         ]);
         return redirect()->back()->with('message','Information added successfully.');
     }
- 
+
     public function hotelEdit($hotelEdit)
     {
         $hotel=Hotel::find($hotelEdit);
@@ -33,17 +33,17 @@ class HotelController extends Controller
     }
     public function hotelUpdate(Request $request,$hotelUpdate)
     {
-        
-        $hotel=Hotel::find($hotelUpdate); 
+
+        $hotel=Hotel::find($hotelUpdate);
         $hotel->update([
-            'Name'=>$request->name,  
-            'Email'=>$request->email,  
-            'Address'=>$request->address,  
-            'Contact'=>$request->contact,  
-            'Website'=>$request->website,  
+            'Name'=>$request->name,
+            'Email'=>$request->email,
+            'Address'=>$request->address,
+            'Contact'=>$request->contact,
+            'Website'=>$request->website,
         ]);
         return redirect()->route('hotel')->with('message','Update successfull.');
 
     }
-  
+
 }

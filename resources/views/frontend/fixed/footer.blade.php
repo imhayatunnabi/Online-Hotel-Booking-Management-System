@@ -37,8 +37,7 @@
                         <ul>
                             <li><span class="icon icon-map-marker"></span><span class="text"> Kalatoli Road, Cox's
                                     Bazar, Bangladesh</span></li>
-                            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+880
-                                        1786603980</span></a></li>
+                            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+880123456789</span></a></li>
                             <li><a href="#"><span class="icon icon-envelope"></span><span
                                         class="text">info@seapalace.com</span></a></li>
                         </ul>
