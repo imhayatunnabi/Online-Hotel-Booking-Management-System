@@ -9,8 +9,8 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
           <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
           	<div class="text">
-	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{route('website')}}">Home</a></span> <span>Rooms</span></p>
-	            <h2 class="mb-4 bread">Our Rooms</h1>
+	            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="{{route('website')}}">Home</a></span> <span>Room Types</span></p>
+	            <h2 class="mb-4 bread">Our Room Types</h1>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@
 <section>
 	<div class="row">
 		@foreach($rooms as $room)
-		 <div class="col-sm col-md-6 col-lg-4 ftco-animate">	
+		 <div class="col-sm col-md-6 col-lg-4 ftco-animate">
 					<div class="room">
 						<div class="icon d-flex justify-content-center align-items-center"></div>
 
