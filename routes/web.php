@@ -43,7 +43,7 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 //route for frontend
 Route::get('/',[LandingpageController::class,'home'])->name('website');
-Route::get('/all-rooms',[LandingpageController::class,'allrooms'])->name('website.rooms');
+Route::get('/all-rooms-types',[LandingpageController::class,'allrooms'])->name('website.rooms');
 Route::get('/about',[LandingpageController::class,'about'])->name('website.about');
 Route::get('/contact',[LandingpageController::class,'contact'])->name('website.contact');
 Route::post('/registration',[LandingpageController::class,'signup'])->name('user.registration');
@@ -76,9 +76,9 @@ Route::post('/do-login',[UserController::class,'doLogin'])->name('do.login');
 
 
 Route::group(['middleware'=>['auth','CheckAdmin'],'prefix'=>'admin'],function (){
-    
 
-Route::get('/user',[UserController::class,'list'])->name('user');   
+
+Route::get('/user',[UserController::class,'list'])->name('user');
 Route::get('/logout',[UserController::class,'logout'])->name('logout');
 Route::get('/panel',[AdminController::class,'home'])->name('dashboard');
 Route::get('/',[MasterController::class,'home'])->name('admin');
