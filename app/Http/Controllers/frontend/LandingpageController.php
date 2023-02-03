@@ -114,7 +114,7 @@ class LandingpageController extends Controller
       }
       else
        {  Alert::warning('You are not authenticate','Do registration & Login');
-          return redirect()->route('website');
+          return redirect()->back();
         }
     }
     public function store(Request $request,$room_id)
