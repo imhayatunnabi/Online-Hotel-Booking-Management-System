@@ -32,6 +32,7 @@ use App\Http\Controllers\frontend\LandingpageController;
 
 // SSLCOMMERZ Start
 
+Route::get('/pay-form/{id}', [SslCommerzPaymentController::class, 'form'])->name('pay.now.form');
 Route::post('/pay/{id}', [SslCommerzPaymentController::class, 'index'])->name('pay.now');
 Route::post('/success', [SslCommerzPaymentController::class, 'success']);
 Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);

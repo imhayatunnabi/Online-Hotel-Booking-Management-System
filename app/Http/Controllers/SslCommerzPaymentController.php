@@ -24,6 +24,10 @@ class SslCommerzPaymentController extends Controller
     {
         return view('exampleHosted');
     }
+    public function form($room_id){
+        $room = Room::find($room_id);
+        return view('frontend.pages.payment.payment',compact('room'));
+    }
 
     public function index(Request $request,$id)
     {

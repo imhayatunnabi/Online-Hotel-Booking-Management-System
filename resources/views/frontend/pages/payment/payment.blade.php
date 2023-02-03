@@ -27,7 +27,7 @@
                         <div class="alert alert-danger">{{$error}}</div>
                         @endforeach
                         @endif
-                        <form method='post' action="{{route('booking.store',$room->id)}}">
+                        <form method='post' action="{{route('pay.now',$room->id)}}">
                             @csrf
                             <div class="form-header">
                                 <h2>Reserve your room</h2>
@@ -68,7 +68,7 @@
                                     placeholder="Enter your phone number">
                             </div>
                             <div class="row">
-                                <div class="col-md-6"><button type="submit" class="submit-btn">Book Now</button></div>
+                                <div class="col-md-6"><button type="submit" class="submit-btn">Pay Now</button></div>
                             </div>
                         </form>
                     </div>
