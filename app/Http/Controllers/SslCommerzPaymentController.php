@@ -26,7 +26,13 @@ class SslCommerzPaymentController extends Controller
     }
     public function form($room_id){
         $room = Room::find($room_id);
-        return view('frontend.pages.payment.payment',compact('room'));
+        if(auth()->user()){
+            return view('frontend.pages.payment.payment',compact('room'));
+        }else{
+            toast('You should authenticate first','error');
+            return back();
+        }
+
     }
 
     public function index(Request $request,$id)
